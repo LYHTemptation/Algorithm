@@ -3,28 +3,20 @@
  * @return {number}
  */
 var romanToInt = function(s) {
-    const V = 5
-    const X = 10
-    const L = 50
-    const C = 100
-    const D = 500
-    const M = 1000
-    const I = 1
-
-    let sum = 0;
-    for(let x of s){
-        switch(x){
-            case('V'): sum += V; break;
-            case('X'): sum += X; break;
-            case('L'): sum += L; break;
-            case('C'): sum += C; break;
-            case('D'): sum += D; break;
-            case('M'): sum += M; break;
-            case('I'): sum += I; break;
-            default: break;
-        }
+    symbols={
+        'V':5,
+        'X':10,
+        'L':50,
+        'C':100,
+        'D':500,
+        'M':1000,
+        'I':1
     }
-    console.log(sum);
-    return sum;
+
+    let value = 0;
+        for(let i=0; i<s.length; i++){
+            symbols[s[i]] < symbols[s[i+1]] ? value -= symbols[s[i]]: value += symbols[s[i]]
+        }
+    return value;
 };
 romanToInt('MCMXCIV');
